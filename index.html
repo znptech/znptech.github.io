@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZNP Tech — Indie Games & Software</title>
+  <meta name="description" content="ZNP Tech LLC builds polished, privacy-friendly mobile games and tools.">
+  <style>
+    :root {
+      --navy: #020b18;
+      --card: #071e33;
+      --card2: #0a2a45;
+      --teal: #00d4aa;
+      --aqua: #00b4d8;
+      --gold: #ffd166;
+      --white: #e8f4fd;
+      --muted: #7ba7bc;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    header {
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .logo {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+    .logo .znp { color: var(--teal); }
+    .logo .tech { color: var(--aqua); }
+    .tagline {
+      color: var(--muted);
+      font-size: 20px;
+      font-weight: 400;
+    }
+    section {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 36px;
+      margin-bottom: 24px;
+      border: 1px solid var(--card2);
+    }
+    section h2 {
+      color: var(--teal);
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    section h3 {
+      color: var(--white);
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    section p {
+      color: var(--white);
+      font-size: 17px;
+      margin-bottom: 16px;
+    }
+    section p:last-child { margin-bottom: 0; }
+    a {
+      color: var(--aqua);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: var(--teal);
+    }
+    .app-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      background: var(--card2);
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+    .app-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      flex-shrink: 0;
+    }
+    .app-info h4 {
+      color: var(--white);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .app-info p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact-row .label {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .contact-row .value {
+      font-size: 17px;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 0 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    footer p { color: var(--muted); font-size: 14px; }
+    @media (max-width: 600px) {
+      .logo { font-size: 42px; }
+      .tagline { font-size: 17px; }
+      section { padding: 24px; }
+      section h3 { font-size: 22px; }
+      .app-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><span class="znp">ZNP</span><span class="tech">Tech</span></div>
+      <div class="tagline">Indie games & software studio</div>
+    </header>
+
+    <section>
+      <h2>About</h2>
+      <h3>Building thoughtful mobile experiences.</h3>
+      <p>ZNP Tech LLC is an independent software studio based in Chicago, Illinois. We design and develop privacy-friendly mobile games and tools with a focus on polish, performance, and respect for our users' time and data.</p>
+    </section>
+
+    <section>
+      <h2>Our Apps</h2>
+      <h3>What we're building.</h3>
+      <div class="app-card">
+        <div class="app-icon">🐠</div>
+        <div class="app-info">
+          <h4>SkySea</h4>
+          <p>A one-tap arcade game. 10 characters, 6 boosts, and a global leaderboard.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <h3>Get in touch.</h3>
+      <div class="contact-row">
+        <div>
+          <div class="label">Email</div>
+          <div class="value"><a href="mailto:znptechlabs@gmail.com">znptechlabs@gmail.com</a></div>
+        </div>
+        <div>
+          <div class="label">Based in</div>
+          <div class="value">Chicago, Illinois, USA</div>
+        </div>
+        <div>
+          <div class="label">Privacy Policy</div>
+          <div class="value"><a href="https://znptech.github.io/skysea-privacy/">SkySea privacy policy</a></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 ZNP Tech LLC. All rights reserved.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
