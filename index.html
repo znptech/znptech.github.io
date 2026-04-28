@@ -1,199 +1,835 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZNP Tech — Indie Games & Software</title>
-  <meta name="description" content="ZNP Tech LLC builds polished, privacy-friendly mobile games and tools.">
-  <style>
-    :root {
-      --navy: #020b18;
-      --card: #071e33;
-      --card2: #0a2a45;
-      --teal: #00d4aa;
-      --aqua: #00b4d8;
-      --gold: #ffd166;
-      --white: #e8f4fd;
-      --muted: #7ba7bc;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--navy);
-      color: var(--white);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 24px;
-    }
-    header {
-      padding: 60px 0 40px;
-      text-align: center;
-    }
-    .logo {
-      font-size: 56px;
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-    .logo .znp { color: var(--teal); }
-    .logo .tech { color: var(--aqua); }
-    .tagline {
-      color: var(--muted);
-      font-size: 20px;
-      font-weight: 400;
-    }
-    section {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 36px;
-      margin-bottom: 24px;
-      border: 1px solid var(--card2);
-    }
-    section h2 {
-      color: var(--teal);
-      font-size: 14px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    section h3 {
-      color: var(--white);
-      font-size: 26px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    section p {
-      color: var(--white);
-      font-size: 17px;
-      margin-bottom: 16px;
-    }
-    section p:last-child { margin-bottom: 0; }
-    a {
-      color: var(--aqua);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    a:hover {
-      color: var(--teal);
-    }
-    .app-card {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
-      background: var(--card2);
-      border-radius: 12px;
-      margin-top: 20px;
-    }
-    .app-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 18px;
-      background: var(--navy);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-      flex-shrink: 0;
-    }
-    .app-info h4 {
-      color: var(--white);
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .app-info p {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 0;
-    }
-    .contact-row {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .contact-row .label {
-      color: var(--muted);
-      font-size: 13px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .contact-row .value {
-      font-size: 17px;
-    }
-    footer {
-      text-align: center;
-      padding: 40px 0 20px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    footer p { color: var(--muted); font-size: 14px; }
-    @media (max-width: 600px) {
-      .logo { font-size: 42px; }
-      .tagline { font-size: 17px; }
-      section { padding: 24px; }
-      section h3 { font-size: 22px; }
-      .app-card { flex-direction: column; text-align: center; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="ZNP Tech — Indie software studio building thoughtful websites, apps, and software. Based in Chicago." />
+<title>ZNP Tech — Websites · Apps · Software</title>
+
+<link rel="icon" type="image/png" href="logo-nav.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-0:#02040a;
+    --ink:#e8efff;
+    --ink-dim:#8b9bbd;
+    --ink-faint:#4d5b7a;
+    --blue:#3a8aff;
+    --blue-deep:#1761ff;
+    --blue-glow:#5cc1ff;
+    --line:rgba(120,170,255,.10);
+    --line-bright:rgba(120,170,255,.32);
+    --panel:rgba(12,20,42,.85);
+    --panel-edge:rgba(120,170,255,.18);
+    --f-display:'Orbitron',sans-serif;
+    --f-body:'Outfit',system-ui,sans-serif;
+    --f-mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--f-body);
+    background:var(--bg-0);
+    color:var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+    min-height:100vh;
+    background-image:
+      radial-gradient(ellipse 800px 500px at 15% 10%, rgba(58,138,255,.18), transparent 60%),
+      radial-gradient(ellipse 700px 400px at 85% 70%, rgba(0,180,255,.10), transparent 55%),
+      radial-gradient(ellipse 1100px 600px at 50% 110%, rgba(23,97,255,.18), transparent 55%),
+      linear-gradient(180deg, #02040a 0%, #06091a 60%, #02040a 100%);
+    background-attachment:fixed;
+  }
+  ::selection{background:var(--blue);color:#fff}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  .grid{
+    position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(120,170,255,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120,170,255,.07) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 35%, #000 30%, transparent 90%);
+    mask-image:radial-gradient(ellipse 80% 70% at 50% 35%, #000 30%, transparent 90%);
+  }
+
+  nav.topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px clamp(20px,4vw,56px);
+    background:rgba(4,8,20,.82);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    transition:padding .25s ease;
+  }
+  nav.topbar.scrolled{padding:10px clamp(20px,4vw,56px)}
+  nav.topbar .logo-wrap{display:flex;align-items:center}
+  nav.topbar .logo{
+    height:42px;width:auto;
+    mix-blend-mode:lighten;
+    image-rendering:-webkit-optimize-contrast;
+  }
+  nav.topbar .menu{
+    display:flex;align-items:center;gap:36px;list-style:none;
+    font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;
+  }
+  nav.topbar .menu a{
+    color:var(--ink-dim);position:relative;padding:6px 0;
+    transition:color .2s;
+  }
+  nav.topbar .menu a::after{
+    content:'';position:absolute;left:0;bottom:0;width:0;height:1px;
+    background:var(--blue-glow);
+    transition:width .25s ease;
+  }
+  nav.topbar .menu a:hover{color:var(--ink)}
+  nav.topbar .menu a:hover::after{width:100%}
+  nav.topbar .menu a span{color:var(--blue);margin-right:6px}
+  nav.topbar .cta{
+    padding:9px 18px;border:1px solid var(--blue);
+    color:var(--blue-glow);font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;
+    background:rgba(58,138,255,.08);
+    transition:background .2s, color .2s, border-color .2s;
+    cursor:pointer;
+  }
+  nav.topbar .cta:hover{
+    color:#fff;background:rgba(58,138,255,.28);
+    border-color:var(--blue-glow);
+  }
+
+  section.hero{
+    min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    padding:120px clamp(20px,5vw,80px) 80px;
+    position:relative;
+  }
+  .hero-inner{
+    max-width:1200px;width:100%;
+    display:grid;grid-template-columns:1.2fr .9fr;gap:60px;align-items:center;
+  }
+  .hero-left{position:relative}
+  .status{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--f-mono);font-size:12px;letter-spacing:.18em;
+    color:var(--blue-glow);
+    padding:7px 14px;
+    border:1px solid var(--line-bright);
+    background:rgba(58,138,255,.06);
+    margin-bottom:32px;
+    opacity:0;animation:rise .7s .1s forwards;
+  }
+  .status .dot{
+    width:7px;height:7px;border-radius:50%;background:#3effb1;
+    box-shadow:0 0 8px #3effb1;
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+  .hero-logo{
+    width:min(520px,100%);height:auto;
+    margin-bottom:8px;
+    mix-blend-mode:lighten;
+    image-rendering:-webkit-optimize-contrast;
+    opacity:0;animation:rise .9s .25s forwards;
+  }
+
+  h1.tagline{
+    font-family:var(--f-display);
+    font-weight:900;
+    font-size:clamp(34px,5.5vw,68px);
+    line-height:1.04;
+    letter-spacing:-.01em;
+    margin:24px 0 22px;
+    opacity:0;animation:rise .9s .4s forwards;
+  }
+  h1.tagline .accent{
+    background:linear-gradient(120deg, var(--blue-glow) 0%, #fff 50%, var(--blue) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+  h1.tagline .slash{color:var(--blue);font-weight:500}
+
+  .hero p.lede{
+    font-size:clamp(15px,1.4vw,18px);
+    color:var(--ink-dim);
+    max-width:560px;
+    margin-bottom:40px;
+    opacity:0;animation:rise .9s .55s forwards;
+  }
+
+  .cta-row{
+    display:flex;gap:16px;flex-wrap:wrap;
+    opacity:0;animation:rise .9s .7s forwards;
+  }
+  .btn{
+    font-family:var(--f-mono);font-size:13px;letter-spacing:.08em;
+    padding:14px 26px;cursor:pointer;
+    transition:transform .2s, box-shadow .2s, background .2s, border-color .2s, color .2s;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--blue-deep), var(--blue));
+    color:#fff;border:1px solid var(--blue-glow);
+    box-shadow:0 8px 24px -8px rgba(58,138,255,.5);
+  }
+  .btn-primary:hover{
+    box-shadow:0 0 30px rgba(58,138,255,.55), 0 12px 32px -8px rgba(58,138,255,.7);
+    transform:translateY(-2px);
+  }
+  .btn-ghost{
+    background:transparent;color:var(--ink);
+    border:1px solid var(--line-bright);
+  }
+  .btn-ghost:hover{
+    border-color:var(--blue);background:rgba(58,138,255,.08);color:var(--blue-glow);
+  }
+
+  .hero-right{position:relative;opacity:0;animation:rise 1s .8s forwards}
+  .hud{
+    background:var(--panel);
+    border:1px solid var(--panel-edge);
+    padding:28px;
+    position:relative;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.6);
+  }
+  .hud::before, .hud::after{
+    content:'';position:absolute;width:14px;height:14px;
+    border:1px solid var(--blue-glow);
+  }
+  .hud::before{top:-1px;left:-1px;border-right:none;border-bottom:none}
+  .hud::after{bottom:-1px;right:-1px;border-left:none;border-top:none}
+  .hud-corner-tr,.hud-corner-bl{position:absolute;width:14px;height:14px;border:1px solid var(--blue-glow)}
+  .hud-corner-tr{top:-1px;right:-1px;border-left:none;border-bottom:none}
+  .hud-corner-bl{bottom:-1px;left:-1px;border-right:none;border-top:none}
+
+  .hud-header{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;
+    color:var(--ink-faint);
+    padding-bottom:14px;margin-bottom:20px;
+    border-bottom:1px dashed var(--line-bright);
+  }
+  .hud-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:11px 0;
+    border-bottom:1px solid var(--line);
+    font-family:var(--f-mono);font-size:13px;
+  }
+  .hud-row:last-child{border:none}
+  .hud-row .label{color:var(--ink-faint);letter-spacing:.06em;font-size:11px;text-transform:uppercase}
+  .hud-row .value{color:var(--ink)}
+  .hud-row .value.ok{color:#3effb1}
+  .hud-row .value.live::before{
+    content:'';display:inline-block;width:6px;height:6px;border-radius:50%;
+    background:#3effb1;box-shadow:0 0 8px #3effb1;margin-right:8px;
+  }
+
+  .stat-grid{
+    margin-top:22px;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+    background:var(--line);
+  }
+  .stat-grid > div{background:rgba(8,14,30,.85);padding:18px 14px;text-align:center}
+  .stat-grid .num{
+    font-family:var(--f-display);font-size:26px;font-weight:700;
+    background:linear-gradient(180deg, #fff, var(--blue-glow));
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .stat-grid .lbl{
+    font-family:var(--f-mono);font-size:10px;letter-spacing:.15em;
+    color:var(--ink-faint);text-transform:uppercase;margin-top:4px;
+  }
+
+  @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+  section{padding:120px clamp(20px,5vw,80px);position:relative}
+  .container{max-width:1200px;margin:0 auto}
+  .section-head{margin-bottom:60px;display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .section-eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--f-mono);font-size:12px;letter-spacing:.18em;
+    color:var(--blue-glow);text-transform:uppercase;margin-bottom:14px;
+  }
+  .section-eyebrow::before{content:'';width:30px;height:1px;background:var(--blue-glow)}
+  .section-title{
+    font-family:var(--f-display);
+    font-size:clamp(30px,4vw,52px);
+    font-weight:700;line-height:1.05;
+    letter-spacing:-.01em;
+  }
+  .section-title em{
+    font-style:normal;
+    background:linear-gradient(120deg, var(--blue-glow), var(--blue));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .section-sub{color:var(--ink-dim);max-width:480px;font-size:15px}
+
+  .service-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service{
+    background:linear-gradient(180deg, rgba(10,18,38,.85), rgba(6,11,26,.85));
+    padding:48px 38px;
+    position:relative;
+    transition:background .25s;
+  }
+  .service:hover{background:linear-gradient(180deg, rgba(14,28,60,.9), rgba(8,14,32,.85))}
+  .service-num{
+    font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;
+    color:var(--ink-faint);margin-bottom:30px;
+  }
+  .service-icon{
+    width:54px;height:54px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--blue);
+    margin-bottom:24px;
+    background:rgba(58,138,255,.10);
+    color:var(--blue-glow);
+    transition:box-shadow .25s, color .25s, background .25s;
+  }
+  .service:hover .service-icon{
+    box-shadow:0 0 20px rgba(58,138,255,.4);
+    background:rgba(58,138,255,.2);
+    color:#fff;
+  }
+  .service-icon svg{width:26px;height:26px}
+  .service-title{
+    font-family:var(--f-display);font-weight:700;font-size:24px;
+    margin-bottom:14px;letter-spacing:.01em;
+  }
+  .service-desc{color:var(--ink-dim);font-size:14.5px;line-height:1.7;margin-bottom:24px}
+  .service-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{
+    font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;
+    padding:5px 10px;border:1px solid var(--line-bright);
+    color:var(--ink-dim);background:rgba(8,14,30,.6);
+  }
+
+  .featured-card{
+    background:linear-gradient(135deg, rgba(14,28,60,.75), rgba(8,14,32,.85));
+    border:1px solid var(--panel-edge);
+    padding:60px clamp(30px,5vw,70px);
+    display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center;
+    position:relative;overflow:hidden;
+  }
+  .featured-card::before{
+    content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;
+    background:radial-gradient(circle, rgba(58,138,255,.18), transparent 60%);
+    pointer-events:none;
+  }
+  .featured-card .badge{
+    display:inline-block;font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;
+    color:var(--blue-glow);padding:5px 12px;border:1px solid var(--blue-glow);
+    background:rgba(58,138,255,.08);margin-bottom:24px;text-transform:uppercase;
+  }
+  .featured-card h3{
+    font-family:var(--f-display);font-size:clamp(34px,4.5vw,56px);
+    font-weight:900;line-height:1;margin-bottom:18px;
+    letter-spacing:-.01em;
+  }
+  .featured-card h3 .gradient{
+    background:linear-gradient(120deg, var(--blue-glow), #fff, var(--blue));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .featured-card p{color:var(--ink-dim);margin-bottom:18px;font-size:15.5px;line-height:1.7;max-width:500px}
+  .featured-meta{display:flex;flex-wrap:wrap;gap:24px;margin:28px 0 32px}
+  .featured-meta div{font-family:var(--f-mono);font-size:12px;color:var(--ink-faint);letter-spacing:.06em}
+  .featured-meta div strong{color:var(--blue-glow);display:block;font-size:13px;margin-bottom:2px;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+
+  .featured-visual{
+    aspect-ratio:1/1.1;
+    background:
+      radial-gradient(circle at 50% 35%, rgba(58,138,255,.22), transparent 65%),
+      linear-gradient(180deg, rgba(58,138,255,.05), rgba(0,180,255,.06));
+    border:1px solid var(--panel-edge);
+    position:relative;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .featured-emoji{
+    font-size:140px;line-height:1;position:relative;z-index:2;
+    filter:drop-shadow(0 0 30px rgba(58,138,255,.5));
+  }
+  .featured-visual .corner{position:absolute;width:18px;height:18px;border:1px solid var(--blue-glow)}
+  .featured-visual .corner.tl{top:12px;left:12px;border-right:none;border-bottom:none}
+  .featured-visual .corner.tr{top:12px;right:12px;border-left:none;border-bottom:none}
+  .featured-visual .corner.bl{bottom:12px;left:12px;border-right:none;border-top:none}
+  .featured-visual .corner.br{bottom:12px;right:12px;border-left:none;border-top:none}
+
+  /* App icon styling — iOS-ish rounded square with glow */
+  .app-icon{
+    width:min(260px,70%);
+    aspect-ratio:1/1;
+    border-radius:24%;
+    object-fit:cover;
+    image-rendering:-webkit-optimize-contrast;
+    box-shadow:
+      0 0 50px rgba(58,138,255,.35),
+      0 20px 50px -10px rgba(0,0,0,.7),
+      inset 0 0 0 1px rgba(120,170,255,.18);
+    position:relative;z-index:2;
+  }
+
+  /* Download buttons row */
+  .download-row{
+    display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;
+  }
+  .store-btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:12px 22px;
+    border:1px solid var(--line-bright);
+    background:rgba(8,14,30,.7);
+    color:var(--ink);
+    font-family:var(--f-body);
+    transition:transform .2s, background .2s, border-color .2s, box-shadow .2s;
+    cursor:pointer;
+  }
+  .store-btn:hover{
+    background:rgba(58,138,255,.12);
+    border-color:var(--blue);
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px -8px rgba(58,138,255,.5);
+  }
+  .store-btn svg{width:24px;height:24px;flex-shrink:0;color:var(--blue-glow)}
+  .store-btn .store-text{display:flex;flex-direction:column;line-height:1.1;text-align:left}
+  .store-btn .store-text small{
+    font-family:var(--f-mono);font-size:9px;letter-spacing:.18em;
+    color:var(--ink-faint);text-transform:uppercase;margin-bottom:2px;
+  }
+  .store-btn .store-text strong{
+    font-family:var(--f-display);font-size:14px;font-weight:700;letter-spacing:.02em;
+  }
+  .privacy-link{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 18px;
+    color:var(--ink-dim);
+    font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;
+    border:1px solid transparent;
+    transition:color .2s, border-color .2s;
+  }
+  .privacy-link:hover{color:var(--blue-glow);border-color:var(--line)}
+  .privacy-link svg{width:14px;height:14px}
+
+  .about-strip{
+    border:1px solid var(--panel-edge);
+    background:linear-gradient(135deg, rgba(10,18,38,.7), rgba(6,11,26,.85));
+    padding:50px clamp(28px,4vw,60px);
+    display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;
+  }
+  .about-strip .vlabel{
+    font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;color:var(--blue-glow);
+    writing-mode:vertical-rl;transform:rotate(180deg);text-transform:uppercase;
+  }
+  .about-strip h3{
+    font-family:var(--f-display);font-size:clamp(22px,2.4vw,32px);font-weight:700;
+    margin-bottom:14px;line-height:1.2;
+  }
+  .about-strip p{color:var(--ink-dim);max-width:760px;font-size:15.5px;line-height:1.75}
+
+  .contact-wrap{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;
+  }
+  .contact-left h2{
+    font-family:var(--f-display);font-size:clamp(34px,4.5vw,58px);font-weight:900;
+    line-height:1.05;margin-bottom:24px;
+  }
+  .contact-left h2 em{
+    font-style:normal;
+    background:linear-gradient(120deg, var(--blue-glow), var(--blue));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .contact-left p{color:var(--ink-dim);font-size:16px;margin-bottom:36px;max-width:480px}
+
+  .contact-card{
+    background:var(--panel);
+    border:1px solid var(--panel-edge);
+    padding:36px;position:relative;
+  }
+  .contact-card .c-tl,.contact-card .c-tr,.contact-card .c-bl,.contact-card .c-br{
+    position:absolute;width:14px;height:14px;border:1px solid var(--blue-glow);
+  }
+  .contact-card .c-tl{top:-1px;left:-1px;border-right:none;border-bottom:none}
+  .contact-card .c-tr{top:-1px;right:-1px;border-left:none;border-bottom:none}
+  .contact-card .c-bl{bottom:-1px;left:-1px;border-right:none;border-top:none}
+  .contact-card .c-br{bottom:-1px;right:-1px;border-left:none;border-top:none}
+
+  .contact-row{
+    display:flex;align-items:center;gap:18px;
+    padding:18px 0;border-bottom:1px solid var(--line);
+  }
+  .contact-row:last-of-type{border:none}
+  .contact-icon{
+    width:46px;height:46px;flex-shrink:0;
+    border:1px solid var(--blue);color:var(--blue-glow);
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(58,138,255,.08);
+  }
+  .contact-icon svg{width:20px;height:20px}
+  .contact-row .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:2px}
+  .contact-row .val{color:var(--ink);font-size:15.5px}
+  .contact-row .val a:hover{color:var(--blue-glow)}
+
+  .contact-cta{
+    margin-top:24px;width:100%;
+    text-align:center;
+    padding:16px;
+    background:linear-gradient(135deg, var(--blue-deep), var(--blue));
+    color:#fff;border:1px solid var(--blue-glow);
+    font-family:var(--f-mono);font-size:13px;letter-spacing:.1em;
+    transition:transform .2s, box-shadow .2s;
+    cursor:pointer;
+    display:block;
+  }
+  .contact-cta:hover{
+    box-shadow:0 0 24px rgba(58,138,255,.5);transform:translateY(-2px);
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:50px clamp(20px,5vw,80px) 30px;
+    background:rgba(0,0,0,.3);
+  }
+  .foot-wrap{
+    max-width:1200px;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;
+  }
+  .foot-wrap .logo{height:34px;opacity:.85;mix-blend-mode:lighten;image-rendering:-webkit-optimize-contrast}
+  .foot-wrap p{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--ink-faint)}
+  .foot-wrap a{color:var(--ink-dim);font-size:13px;transition:color .2s}
+  .foot-wrap a:hover{color:var(--blue-glow)}
+  .foot-links{display:flex;gap:24px;flex-wrap:wrap}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    .reveal{opacity:1;transform:none}
+  }
+
+  @media (max-width: 980px){
+    .hero-inner{grid-template-columns:1fr;gap:40px}
+    .service-grid{grid-template-columns:1fr}
+    .featured-card{grid-template-columns:1fr;gap:40px}
+    .contact-wrap{grid-template-columns:1fr;gap:40px}
+    nav.topbar .menu{display:none}
+    .featured-emoji{font-size:96px}
+    .featured-visual{aspect-ratio:1.4/1}
+  }
+  @media (max-width: 560px){
+    section{padding:80px 20px}
+    section.hero{padding-top:110px}
+    .service{padding:36px 28px}
+    .featured-card{padding:40px 24px}
+    .contact-card{padding:28px 22px}
+    .cta-row{flex-direction:column;align-items:stretch}
+    .btn{justify-content:center}
+    .foot-wrap{flex-direction:column;text-align:center}
+    nav.topbar{padding:12px 18px}
+    nav.topbar .logo{height:34px}
+    nav.topbar .cta{padding:7px 12px;font-size:10px}
+    .about-strip{grid-template-columns:1fr;gap:20px}
+    .about-strip .vlabel{writing-mode:horizontal-tb;transform:none}
+  }
+</style>
 </head>
+
 <body>
-  <div class="container">
+  <div class="grid"></div>
 
-    <header>
-      <div class="logo"><span class="znp">ZNP</span><span class="tech">Tech</span></div>
-      <div class="tagline">Indie games & software studio</div>
-    </header>
+  <nav class="topbar" id="nav">
+    <div class="logo-wrap">
+      <a href="#top"><img src="logo-nav.png" alt="ZNP Tech" class="logo" width="221" height="42"/></a>
+    </div>
+    <ul class="menu">
+      <li><a href="#services"><span>01.</span>Services</a></li>
+      <li><a href="#work"><span>02.</span>Work</a></li>
+      <li><a href="#about"><span>03.</span>About</a></li>
+      <li><a href="#contact"><span>04.</span>Contact</a></li>
+    </ul>
+    <a href="mailto:znptechlabs@gmail.com" class="cta">START_PROJECT →</a>
+  </nav>
 
-    <section>
-      <h2>About</h2>
-      <h3>Building thoughtful mobile experiences.</h3>
-      <p>ZNP Tech LLC is an independent software studio based in Chicago, Illinois. We design and develop privacy-friendly mobile games and tools with a focus on polish, performance, and respect for our users' time and data.</p>
-    </section>
-
-    <section>
-      <h2>Our Apps</h2>
-      <h3>What we're building.</h3>
-      <div class="app-card">
-        <div class="app-icon">🐠</div>
-        <div class="app-info">
-          <h4>SkySea</h4>
-          <p>A one-tap arcade game. 10 characters, 6 boosts, and a global leaderboard.</p>
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="status"><span class="dot"></span> SYSTEM ONLINE · ACCEPTING PROJECTS · 2026</div>
+        <img src="logo.png" alt="ZNP Tech — Websites · Apps · Software" class="hero-logo" width="520" height="138"/>
+        <h1 class="tagline">
+          We build <span class="accent">software that works</span><br/>
+          <span class="slash">//</span> for people who care about the details.
+        </h1>
+        <p class="lede">
+          ZNP Tech is an indie studio in Chicago designing privacy-friendly websites, mobile apps, and software with an obsession for polish, performance, and respect for your users' time.
+        </p>
+        <div class="cta-row">
+          <a href="#work" class="btn btn-primary">VIEW_OUR_WORK <span>→</span></a>
+          <a href="#contact" class="btn btn-ghost">GET_IN_TOUCH</a>
         </div>
       </div>
-    </section>
 
-    <section>
-      <h2>Contact</h2>
-      <h3>Get in touch.</h3>
-      <div class="contact-row">
-        <div>
-          <div class="label">Email</div>
-          <div class="value"><a href="mailto:znptechlabs@gmail.com">znptechlabs@gmail.com</a></div>
-        </div>
-        <div>
-          <div class="label">Based in</div>
-          <div class="value">Chicago, Illinois, USA</div>
-        </div>
-        <div>
-          <div class="label">Privacy Policy</div>
-          <div class="value"><a href="https://znptech.github.io/skysea-privacy/">SkySea privacy policy</a></div>
+      <div class="hero-right">
+        <div class="hud">
+          <span class="hud-corner-tr"></span>
+          <span class="hud-corner-bl"></span>
+          <div class="hud-header">
+            <span>// STUDIO_STATUS.cfg</span>
+            <span>v2.6.4</span>
+          </div>
+          <div class="hud-row"><span class="label">Studio</span><span class="value">ZNP Tech LLC</span></div>
+          <div class="hud-row"><span class="label">Location</span><span class="value">Chicago, IL</span></div>
+          <div class="hud-row"><span class="label">Stack</span><span class="value">Cross-platform</span></div>
+          <div class="hud-row"><span class="label">Privacy</span><span class="value ok">first-class</span></div>
+          <div class="hud-row"><span class="label">Status</span><span class="value live">live &amp; shipping</span></div>
+
+          <div class="stat-grid">
+            <div><div class="num">100%</div><div class="lbl">Privacy First</div></div>
+            <div><div class="num">0</div><div class="lbl">Trackers</div></div>
+            <div><div class="num">∞</div><div class="lbl">Polish</div></div>
+            <div><div class="num">1:1</div><div class="lbl">You ↔ Us</div></div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      <p>&copy; 2026 ZNP Tech LLC. All rights reserved.</p>
-    </footer>
+  <section id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-eyebrow">// 01 — What we build</div>
+          <h2 class="section-title">Three disciplines.<br/><em>One studio.</em></h2>
+        </div>
+        <p class="section-sub">From the first wireframe to the App Store listing, we handle the whole stack — design, code, ship.</p>
+      </div>
 
-  </div>
+      <div class="service-grid reveal">
+        <div class="service">
+          <div class="service-num">// 01</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="14" rx="1"/>
+              <path d="M3 8h18M7 12h6M7 14h4"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Websites</h3>
+          <p class="service-desc">Marketing sites, landing pages, and web apps that load fast, scale clean, and feel good to use. No bloat, no dark patterns.</p>
+          <div class="service-tags">
+            <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Static</span><span class="tag">CMS</span>
+          </div>
+        </div>
+
+        <div class="service">
+          <div class="service-num">// 02</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="2" width="12" height="20" rx="2"/>
+              <path d="M11 18h2"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Apps</h3>
+          <p class="service-desc">Native and cross-platform mobile apps for iOS &amp; Android. Built around real human behavior, with thoughtful onboarding and zero creepy data harvesting.</p>
+          <div class="service-tags">
+            <span class="tag">iOS</span><span class="tag">Android</span><span class="tag">Flutter</span><span class="tag">Unity</span>
+          </div>
+        </div>
+
+        <div class="service">
+          <div class="service-num">// 03</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 6 2 12l6 6M16 6l6 6-6 6M14 4l-4 16"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Software</h3>
+          <p class="service-desc">Custom desktop tools, internal dashboards, automation scripts, and bespoke software for teams that have outgrown the off-the-shelf options.</p>
+          <div class="service-tags">
+            <span class="tag">Desktop</span><span class="tag">Automation</span><span class="tag">APIs</span><span class="tag">Tools</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-eyebrow">// 02 — Featured release</div>
+          <h2 class="section-title">Currently <em>shipping.</em></h2>
+        </div>
+        <p class="section-sub">A taste of what comes out of the studio.</p>
+      </div>
+
+      <div class="featured-card reveal">
+        <div>
+          <span class="badge">// LIVE_NOW</span>
+          <h3>Sky<span class="gradient">Sea</span></h3>
+          <p>A one-tap arcade game with the calm of a tide and the sting of a leaderboard. Glide through endless skies, collect stars, dodge what doesn't want you alive — and climb the global ladder.</p>
+          <div class="featured-meta">
+            <div><strong>Genre</strong>One-tap Arcade</div>
+            <div><strong>Characters</strong>10 Unlockables</div>
+            <div><strong>Boosts</strong>6 Power-ups</div>
+            <div><strong>Leaderboard</strong>Global · Live</div>
+          </div>
+
+          <div class="download-row">
+            <!-- TODO: replace href="#" with your real App Store URL -->
+            <a href="#" class="store-btn" aria-label="Download SkySea on the App Store">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.05 12.54c-.03-3.16 2.58-4.68 2.7-4.75-1.47-2.15-3.76-2.45-4.57-2.48-1.94-.2-3.79 1.14-4.78 1.14-.99 0-2.51-1.11-4.13-1.08-2.13.03-4.09 1.24-5.18 3.13-2.21 3.83-.57 9.5 1.59 12.61 1.05 1.52 2.31 3.23 3.95 3.17 1.59-.06 2.19-1.03 4.11-1.03s2.46 1.03 4.14.99c1.71-.03 2.79-1.55 3.84-3.08 1.21-1.77 1.71-3.49 1.74-3.58-.04-.02-3.34-1.28-3.41-5.04zM14.36 3.78C15.23 2.72 15.81 1.25 15.65 0c-1.22.05-2.7.81-3.6 1.86-.81.93-1.51 2.42-1.32 3.65 1.36.1 2.74-.69 3.63-1.73z"/>
+              </svg>
+              <div class="store-text">
+                <small>Download on the</small>
+                <strong>App Store</strong>
+              </div>
+            </a>
+
+            <!-- TODO: replace href="#" with your real Google Play URL -->
+            <a href="#" class="store-btn" aria-label="Get SkySea on Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3.6 1.7c-.4.4-.6 1-.6 1.7v17.2c0 .7.2 1.3.6 1.7l11.7-11.3L3.6 1.7zM16.7 11.7l3.4-3.3c1.1-1 1.1-2.6 0-3.6l-2.7-2.6c-.5-.5-1.4-.5-2 0L13 4.6l3.7 7.1zM4.7 22.5c.4.1.9 0 1.4-.3l11-6.4-3.4-3.3-9 10zM5.7 1.5c-.5-.3-1-.4-1.4-.3l9 10 3.4-3.3-11-6.4z"/>
+              </svg>
+              <div class="store-text">
+                <small>Get it on</small>
+                <strong>Google Play</strong>
+              </div>
+            </a>
+
+            <a href="https://znptech.github.io/skysea-privacy/" class="privacy-link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3z"/>
+              </svg>
+              Privacy Policy
+            </a>
+          </div>
+        </div>
+        <div class="featured-visual">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <img src="skysea-icon.png" alt="SkySea app icon" class="app-icon" width="260" height="260"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="padding-top:0">
+    <div class="container">
+      <div class="about-strip reveal">
+        <div class="vlabel">// ABOUT_THE_STUDIO</div>
+        <div>
+          <h3>Independent. Privacy-friendly.<br/>Allergic to bloat.</h3>
+          <p>ZNP Tech LLC is a small, independent software studio based in Chicago, Illinois. We design and develop privacy-friendly digital products with a focus on polish, performance, and respect for our users' time and data. No surveillance. No filler features. Just software that earns its place on your device.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-wrap">
+        <div class="contact-left reveal">
+          <div class="section-eyebrow">// 03 — Get in touch</div>
+          <h2>Got an idea?<br/><em>Let's build it.</em></h2>
+          <p>Whether it's a website that needs a personality, an app idea you can't shake, or internal software that's holding your team back — we'd love to hear about it.</p>
+        </div>
+
+        <div class="contact-card reveal">
+          <span class="c-tl"></span><span class="c-tr"></span>
+          <span class="c-bl"></span><span class="c-br"></span>
+
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="1"/>
+                <path d="m3 7 9 6 9-6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="lbl">Email</div>
+              <div class="val"><a href="mailto:znptechlabs@gmail.com">znptechlabs@gmail.com</a></div>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s7-7 7-13a7 7 0 1 0-14 0c0 6 7 13 7 13Z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+            <div>
+              <div class="lbl">Based in</div>
+              <div class="val">Chicago, Illinois · USA</div>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3 2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="lbl">Response time</div>
+              <div class="val">Usually within 24 hours</div>
+            </div>
+          </div>
+
+          <a class="contact-cta" href="mailto:znptechlabs@gmail.com">SEND_MESSAGE →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-wrap">
+      <img src="logo-nav.png" alt="ZNP Tech" class="logo" width="179" height="34"/>
+      <p>© 2026 ZNP TECH LLC · ALL RIGHTS RESERVED</p>
+      <div class="foot-links">
+        <a href="#work">SkySea</a>
+        <a href="mailto:znptechlabs@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const nav = document.getElementById('nav');
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if(!ticking){
+          requestAnimationFrame(() => {
+            nav.classList.toggle('scrolled', window.scrollY > 30);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, {passive:true});
+    })();
+
+    if('IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if(e.isIntersecting){
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
+  </script>
 </body>
 </html>
