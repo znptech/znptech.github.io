@@ -3,13 +3,65 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="ZNP Tech — Indie software studio building thoughtful websites, apps, and software. Based in Chicago." />
-<title>ZNP Tech — Websites · Apps · Software</title>
 
-<link rel="icon" type="image/png" href="logo-nav.png" />
+<!-- Primary SEO -->
+<title>ZNP Tech — Websites · Apps · Software</title>
+<meta name="description" content="ZNP Tech is an indie software studio in Chicago designing privacy-friendly websites, mobile apps, and custom software with an obsession for polish, performance, and respect for your users' time." />
+<meta name="author" content="ZNP Tech LLC" />
+<meta name="keywords" content="ZNP Tech, software studio Chicago, indie app development, custom software, privacy-friendly apps, mobile app development, website design, SkySea" />
+<link rel="canonical" href="https://znptech.com/" />
+<meta name="theme-color" content="#02040a" />
+
+<!-- Open Graph (iMessage, Discord, LinkedIn, Facebook, etc.) -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://znptech.com/" />
+<meta property="og:title" content="ZNP Tech — Websites · Apps · Software" />
+<meta property="og:description" content="Indie software studio in Chicago designing privacy-friendly websites, mobile apps, and custom software." />
+<meta property="og:image" content="https://znptech.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="ZNP Tech — Indie Software Studio, Chicago, IL" />
+<meta property="og:site_name" content="ZNP Tech" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ZNP Tech — Websites · Apps · Software" />
+<meta name="twitter:description" content="Indie software studio in Chicago designing privacy-friendly websites, mobile apps, and custom software." />
+<meta name="twitter:image" content="https://znptech.com/og-image.png" />
+
+<!-- Favicons -->
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Structured data: helps Google understand the site -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ZNP Tech LLC",
+  "url": "https://znptech.com/",
+  "logo": "https://znptech.com/favicon-512.png",
+  "description": "Indie software studio in Chicago designing privacy-friendly websites, mobile apps, and custom software.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Chicago",
+    "addressRegion": "IL",
+    "addressCountry": "US"
+  },
+  "email": "business@znptech.com",
+  "sameAs": []
+}
+</script>
 
 <style>
   :root{
@@ -318,9 +370,19 @@
     background:linear-gradient(135deg, rgba(14,28,60,.75), rgba(8,14,32,.85));
     border:1px solid var(--panel-edge);
     padding:60px clamp(30px,5vw,70px);
-    display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    grid-template-rows:auto 1fr;
+    grid-template-areas:
+      "header visual"
+      "body   visual";
+    gap:0 60px;
+    align-items:start;
     position:relative;overflow:hidden;
   }
+  .featured-header{grid-area:header}
+  .featured-body{grid-area:body;margin-top:18px}
+  .featured-visual-wrap{grid-area:visual;align-self:center;width:100%}
   .featured-card::before{
     content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;
     background:radial-gradient(circle, rgba(58,138,255,.18), transparent 60%);
@@ -417,6 +479,30 @@
   }
   .privacy-link:hover{color:var(--blue-glow);border-color:var(--line)}
   .privacy-link svg{width:14px;height:14px}
+
+  /* Coming Soon variant — visually clearly disabled */
+  .store-btn-coming{
+    cursor:default;opacity:.55;
+    background:rgba(8,14,30,.45);
+    border-style:dashed;
+  }
+  .store-btn-coming:hover{
+    background:rgba(8,14,30,.45);
+    border-color:var(--line-bright);
+    transform:none;box-shadow:none;
+  }
+
+  .support-line{
+    margin-top:24px;
+    font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;
+    color:var(--ink-faint);
+  }
+  .support-line a{
+    color:var(--blue-glow);
+    border-bottom:1px solid transparent;
+    transition:border-color .2s;
+  }
+  .support-line a:hover{border-color:var(--blue-glow)}
 
   .about-strip{
     border:1px solid var(--panel-edge);
@@ -518,7 +604,16 @@
   @media (max-width: 980px){
     .hero-inner{grid-template-columns:1fr;gap:40px}
     .service-grid{grid-template-columns:1fr}
-    .featured-card{grid-template-columns:1fr;gap:40px}
+    .featured-card{
+      grid-template-columns:1fr;
+      grid-template-rows:auto auto auto;
+      grid-template-areas:
+        "header"
+        "visual"
+        "body";
+      gap:30px 0;
+    }
+    .featured-body{margin-top:0}
     .contact-wrap{grid-template-columns:1fr;gap:40px}
     nav.topbar .menu{display:none}
     .featured-emoji{font-size:96px}
@@ -555,7 +650,7 @@
       <li><a href="#about"><span>03.</span>About</a></li>
       <li><a href="#contact"><span>04.</span>Contact</a></li>
     </ul>
-    <a href="mailto:znptechlabs@gmail.com" class="cta">START_PROJECT →</a>
+    <a href="mailto:business@znptech.com" class="cta">START_PROJECT →</a>
   </nav>
 
   <section class="hero" id="top">
@@ -670,9 +765,20 @@
       </div>
 
       <div class="featured-card reveal">
-        <div>
+        <div class="featured-header">
           <span class="badge">// LIVE_NOW</span>
           <h3>Sky<span class="gradient">Sea</span></h3>
+        </div>
+
+        <div class="featured-visual-wrap">
+          <div class="featured-visual">
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <span class="corner bl"></span><span class="corner br"></span>
+            <img src="skysea-icon.png" alt="SkySea app icon" class="app-icon" width="260" height="260"/>
+          </div>
+        </div>
+
+        <div class="featured-body">
           <p>A one-tap arcade game with the calm of a tide and the sting of a leaderboard. Glide through endless skies, collect stars, dodge what doesn't want you alive — and climb the global ladder.</p>
           <div class="featured-meta">
             <div><strong>Genre</strong>One-tap Arcade</div>
@@ -682,8 +788,7 @@
           </div>
 
           <div class="download-row">
-            <!-- TODO: replace href="#" with your real App Store URL -->
-            <a href="#" class="store-btn" aria-label="Download SkySea on the App Store">
+            <a href="https://apps.apple.com/us/app/skysea/id6761926872" target="_blank" rel="noopener" class="store-btn" aria-label="Download SkySea on the App Store">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.05 12.54c-.03-3.16 2.58-4.68 2.7-4.75-1.47-2.15-3.76-2.45-4.57-2.48-1.94-.2-3.79 1.14-4.78 1.14-.99 0-2.51-1.11-4.13-1.08-2.13.03-4.09 1.24-5.18 3.13-2.21 3.83-.57 9.5 1.59 12.61 1.05 1.52 2.31 3.23 3.95 3.17 1.59-.06 2.19-1.03 4.11-1.03s2.46 1.03 4.14.99c1.71-.03 2.79-1.55 3.84-3.08 1.21-1.77 1.71-3.49 1.74-3.58-.04-.02-3.34-1.28-3.41-5.04zM14.36 3.78C15.23 2.72 15.81 1.25 15.65 0c-1.22.05-2.7.81-3.6 1.86-.81.93-1.51 2.42-1.32 3.65 1.36.1 2.74-.69 3.63-1.73z"/>
               </svg>
@@ -693,16 +798,15 @@
               </div>
             </a>
 
-            <!-- TODO: replace href="#" with your real Google Play URL -->
-            <a href="#" class="store-btn" aria-label="Get SkySea on Google Play">
+            <span class="store-btn store-btn-coming" aria-label="Coming soon to Google Play">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M3.6 1.7c-.4.4-.6 1-.6 1.7v17.2c0 .7.2 1.3.6 1.7l11.7-11.3L3.6 1.7zM16.7 11.7l3.4-3.3c1.1-1 1.1-2.6 0-3.6l-2.7-2.6c-.5-.5-1.4-.5-2 0L13 4.6l3.7 7.1zM4.7 22.5c.4.1.9 0 1.4-.3l11-6.4-3.4-3.3-9 10zM5.7 1.5c-.5-.3-1-.4-1.4-.3l9 10 3.4-3.3-11-6.4z"/>
               </svg>
               <div class="store-text">
-                <small>Get it on</small>
+                <small>Coming soon to</small>
                 <strong>Google Play</strong>
               </div>
-            </a>
+            </span>
 
             <a href="https://znptech.github.io/skysea-privacy/" class="privacy-link" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -711,11 +815,8 @@
               Privacy Policy
             </a>
           </div>
-        </div>
-        <div class="featured-visual">
-          <span class="corner tl"></span><span class="corner tr"></span>
-          <span class="corner bl"></span><span class="corner br"></span>
-          <img src="skysea-icon.png" alt="SkySea app icon" class="app-icon" width="260" height="260"/>
+
+          <p class="support-line">Need help with SkySea? Email <a href="mailto:support@znptech.com">support@znptech.com</a></p>
         </div>
       </div>
     </div>
@@ -755,7 +856,7 @@
             </div>
             <div>
               <div class="lbl">Email</div>
-              <div class="val"><a href="mailto:znptechlabs@gmail.com">znptechlabs@gmail.com</a></div>
+              <div class="val"><a href="mailto:business@znptech.com">business@znptech.com</a></div>
             </div>
           </div>
 
@@ -785,7 +886,7 @@
             </div>
           </div>
 
-          <a class="contact-cta" href="mailto:znptechlabs@gmail.com">SEND_MESSAGE →</a>
+          <a class="contact-cta" href="mailto:business@znptech.com">SEND_MESSAGE →</a>
         </div>
       </div>
     </div>
@@ -797,7 +898,7 @@
       <p>© 2026 ZNP TECH LLC · ALL RIGHTS RESERVED</p>
       <div class="foot-links">
         <a href="#work">SkySea</a>
-        <a href="mailto:znptechlabs@gmail.com">Contact</a>
+        <a href="mailto:business@znptech.com">Contact</a>
       </div>
     </div>
   </footer>
