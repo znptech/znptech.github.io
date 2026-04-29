@@ -161,10 +161,12 @@
     display:flex;align-items:center;justify-content:center;
     padding:120px clamp(20px,5vw,80px) 80px;
     position:relative;
+    overflow:hidden;
   }
   .hero-inner{
     max-width:1200px;width:100%;
     display:grid;grid-template-columns:1.2fr .9fr;gap:60px;align-items:center;
+    position:relative;z-index:1;
   }
   .hero-left{position:relative}
   .status{
@@ -301,6 +303,198 @@
 
   @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
+  /* ========================================
+     ANIMATION LAYER (GPU-accelerated only)
+     ======================================== */
+
+  /* Terminal cursor blink */
+  @keyframes cursor-blink{
+    0%,49%{opacity:1}
+    50%,100%{opacity:0}
+  }
+  .term-cursor{
+    display:inline-block;width:.6ch;height:1em;
+    background:var(--blue-glow);
+    margin-left:4px;vertical-align:-2px;
+    animation:cursor-blink 1s steps(1) infinite;
+    box-shadow:0 0 8px var(--blue-glow);
+  }
+
+  /* Hero green dot ripple — adds a slowly expanding halo around the live dot */
+  .status .dot{position:relative}
+  .status .dot::after{
+    content:'';position:absolute;inset:-4px;border-radius:50%;
+    border:1px solid #3effb1;
+    animation:dot-ripple 1.8s ease-out infinite;
+    pointer-events:none;
+  }
+  @keyframes dot-ripple{
+    0%{transform:scale(.6);opacity:.9}
+    100%{transform:scale(2.6);opacity:0}
+  }
+
+  /* SkySea fish — gently rotates AND bobs (combined transform) */
+  .app-icon{
+    animation:fish-bob 5s ease-in-out infinite;
+    will-change:transform;
+  }
+  @keyframes fish-bob{
+    0%,100%{transform:translateY(0) rotate(-3deg)}
+    50%{transform:translateY(-12px) rotate(3deg)}
+  }
+  /* Subtle pulsing glow ring around the icon */
+  .featured-visual::after{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 50%, rgba(58,138,255,.25), transparent 50%);
+    animation:icon-pulse 3.5s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes icon-pulse{
+    0%,100%{opacity:.4;transform:scale(.9)}
+    50%{opacity:.8;transform:scale(1.05)}
+  }
+
+  /* Service icons — slow rotation on hover */
+  .service-icon{
+    transition:box-shadow .3s, color .3s, background .3s, transform .5s cubic-bezier(.4,2,.5,1);
+  }
+  .service:hover .service-icon{
+    transform:rotate(8deg) scale(1.08);
+    box-shadow:0 0 20px rgba(58,138,255,.5), 0 0 40px rgba(58,138,255,.2);
+    background:rgba(58,138,255,.2);
+    color:#fff;
+  }
+
+  /* Service card — animated bottom border that draws in on hover */
+  .service{position:relative;overflow:hidden}
+  .service::after{
+    content:'';position:absolute;left:0;bottom:0;height:2px;width:0;
+    background:linear-gradient(90deg, transparent, var(--blue-glow), transparent);
+    transition:width .5s ease;
+    box-shadow:0 0 12px var(--blue-glow);
+  }
+  .service:hover::after{width:100%}
+
+  /* Animated number counter — pulses gently */
+  .stat-grid .num{
+    transition:transform .3s ease;
+    display:inline-block;
+  }
+  .stat-grid > div:hover .num{transform:scale(1.15)}
+
+  /* HUD live row — subtle data flow scan line */
+  .hud-row .value.live{position:relative;overflow:hidden}
+
+  /* Buttons — animated shine sweep on hover */
+  .btn-primary,.contact-cta{position:relative;overflow:hidden}
+  .btn-primary::before,.contact-cta::before{
+    content:'';position:absolute;top:0;left:-100%;width:80%;height:100%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+    transition:left .7s ease;
+    pointer-events:none;
+  }
+  .btn-primary:hover::before,.contact-cta:hover::before{left:130%}
+
+  /* Section eyebrow — animated dot before the line */
+  .section-eyebrow{position:relative}
+  .section-eyebrow::before{
+    transition:width .4s ease;
+  }
+  .reveal.in .section-eyebrow::before{
+    animation:eyebrow-draw 1.2s ease forwards;
+  }
+  @keyframes eyebrow-draw{
+    0%{width:0}
+    100%{width:30px}
+  }
+
+  /* Tag chips — staggered fade on card visible */
+  .service .tag{
+    opacity:0;transform:translateY(6px);
+    transition:opacity .4s ease, transform .4s ease, color .2s, border-color .2s;
+  }
+  .service.in-view .tag{opacity:1;transform:translateY(0)}
+  .service.in-view .tag:nth-child(1){transition-delay:.1s}
+  .service.in-view .tag:nth-child(2){transition-delay:.2s}
+  .service.in-view .tag:nth-child(3){transition-delay:.3s}
+  .service.in-view .tag:nth-child(4){transition-delay:.4s}
+  .service .tag:hover{color:var(--blue-glow);border-color:var(--blue)}
+
+  /* Featured card badge — slow pulse glow */
+  .featured-card .badge{
+    animation:badge-glow 2.5s ease-in-out infinite;
+  }
+  @keyframes badge-glow{
+    0%,100%{box-shadow:0 0 0 0 rgba(58,138,255,.4)}
+    50%{box-shadow:0 0 16px 2px rgba(58,138,255,.55)}
+  }
+
+  /* Store buttons — playful tilt on hover */
+  .store-btn:not(.store-btn-coming){
+    transition:transform .3s cubic-bezier(.4,1.6,.5,1), background .2s, border-color .2s, box-shadow .3s;
+  }
+  .store-btn:not(.store-btn-coming):hover{
+    transform:translateY(-3px) rotate(-1deg);
+  }
+
+  /* Click ripple — applied via JS to any .btn or .store-btn */
+  .ripple-fx{
+    position:absolute;border-radius:50%;
+    background:rgba(255,255,255,.45);
+    transform:scale(0);
+    animation:ripple .6s ease-out;
+    pointer-events:none;
+  }
+  @keyframes ripple{
+    to{transform:scale(4);opacity:0}
+  }
+
+  /* Hero glow orb — slowly drifts in the background of the hero */
+  .hero-orb{
+    position:absolute;top:20%;right:5%;
+    width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle, rgba(58,138,255,.35), transparent 70%);
+    filter:blur(20px);
+    animation:orb-drift 14s ease-in-out infinite;
+    pointer-events:none;z-index:0;
+    will-change:transform;
+  }
+  @keyframes orb-drift{
+    0%,100%{transform:translate(0,0) scale(1)}
+    33%{transform:translate(-40px,30px) scale(1.15)}
+    66%{transform:translate(30px,-20px) scale(.9)}
+  }
+  .hero-orb-2{
+    top:auto;bottom:10%;left:8%;right:auto;
+    width:280px;height:280px;
+    background:radial-gradient(circle, rgba(0,180,255,.18), transparent 70%);
+    animation-duration:18s;animation-direction:reverse;
+  }
+
+  /* Tagline word reveal - each line animates in */
+  h1.tagline{position:relative}
+  h1.tagline .accent{
+    background-size:200% 100%;
+    animation:gradient-flow 6s ease-in-out infinite;
+  }
+  @keyframes gradient-flow{
+    0%,100%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+  }
+
+  /* Service number — counts visually with a slide */
+  .service-num{
+    transition:color .3s, transform .3s, letter-spacing .3s;
+  }
+  .service:hover .service-num{
+    color:var(--blue-glow);
+    letter-spacing:.3em;
+  }
+
+  /* Disable all infinite animations when off-screen via paused class */
+  .anim-paused,
+  .anim-paused *{animation-play-state:paused !important}
+
   section{padding:120px clamp(20px,5vw,80px);position:relative}
   .container{max-width:1200px;margin:0 auto}
   .section-head{margin-bottom:60px;display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
@@ -347,11 +541,6 @@
     background:rgba(58,138,255,.10);
     color:var(--blue-glow);
     transition:box-shadow .25s, color .25s, background .25s;
-  }
-  .service:hover .service-icon{
-    box-shadow:0 0 20px rgba(58,138,255,.4);
-    background:rgba(58,138,255,.2);
-    color:#fff;
   }
   .service-icon svg{width:26px;height:26px}
   .service-title{
@@ -415,10 +604,6 @@
     border:1px solid var(--panel-edge);
     position:relative;display:flex;align-items:center;justify-content:center;
     overflow:hidden;
-  }
-  .featured-emoji{
-    font-size:140px;line-height:1;position:relative;z-index:2;
-    filter:drop-shadow(0 0 30px rgba(58,138,255,.5));
   }
   .featured-visual .corner{position:absolute;width:18px;height:18px;border:1px solid var(--blue-glow)}
   .featured-visual .corner.tl{top:12px;left:12px;border-right:none;border-bottom:none}
@@ -616,7 +801,6 @@
     .featured-body{margin-top:0}
     .contact-wrap{grid-template-columns:1fr;gap:40px}
     nav.topbar .menu{display:none}
-    .featured-emoji{font-size:96px}
     .featured-visual{aspect-ratio:1.4/1}
   }
   @media (max-width: 560px){
@@ -654,13 +838,15 @@
   </nav>
 
   <section class="hero" id="top">
+    <div class="hero-orb"></div>
+    <div class="hero-orb hero-orb-2"></div>
     <div class="hero-inner">
       <div class="hero-left">
         <div class="status"><span class="dot"></span> SYSTEM ONLINE · ACCEPTING PROJECTS · 2026</div>
         <img src="logo.png" alt="ZNP Tech — Websites · Apps · Software" class="hero-logo" width="520" height="138"/>
-        <h1 class="tagline">
+        <h1 class="tagline" id="typewriter-target">
           We build <span class="accent">software that works</span><br/>
-          <span class="slash">//</span> for people who care about the details.
+          <span class="slash">//</span> for people who care about the details.<span class="term-cursor"></span>
         </h1>
         <p class="lede">
           ZNP Tech is an indie studio in Chicago designing privacy-friendly websites, mobile apps, and software with an obsession for polish, performance, and respect for your users' time.
@@ -904,6 +1090,9 @@
   </footer>
 
   <script>
+    // ============================
+    // 1) Scroll → nav state
+    // ============================
     (function(){
       const nav = document.getElementById('nav');
       let ticking = false;
@@ -918,6 +1107,9 @@
       }, {passive:true});
     })();
 
+    // ============================
+    // 2) Reveal-on-scroll observer
+    // ============================
     if('IntersectionObserver' in window){
       const io = new IntersectionObserver((entries) => {
         entries.forEach(e => {
@@ -930,6 +1122,124 @@
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     } else {
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
+
+    // ============================
+    // 3) Service-card tag stagger (separate observer for each service)
+    // ============================
+    if('IntersectionObserver' in window){
+      const sIo = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if(e.isIntersecting){
+            e.target.classList.add('in-view');
+            sIo.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      document.querySelectorAll('.service').forEach(el => sIo.observe(el));
+    }
+
+    // ============================
+    // 4) Click ripple effect on buttons
+    // ============================
+    const rippleTargets = document.querySelectorAll('.btn, .store-btn:not(.store-btn-coming), .contact-cta');
+    rippleTargets.forEach(btn => {
+      btn.addEventListener('click', function(e){
+        if(this.classList.contains('store-btn-coming')) return;
+        const rect = this.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        const size = Math.max(rect.width, rect.height);
+        ripple.className = 'ripple-fx';
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+        ripple.style.top  = (e.clientY - rect.top - size/2) + 'px';
+        // ensure parent is positioned
+        const cs = getComputedStyle(this);
+        if(cs.position === 'static') this.style.position = 'relative';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // ============================
+    // 5) Stat number scramble on first scroll into view
+    // ============================
+    function scrambleNumber(el){
+      const target = el.dataset.value || el.textContent.trim();
+      const isPercent = target.includes('%');
+      const isInfinite = target === '∞';
+      const isRatio = target.includes(':');
+      // Don't scramble pure symbols
+      if(isInfinite || isRatio){
+        // Just do a quick fade in; symbol stays
+        el.style.opacity = '0';
+        el.animate([{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1)'}],
+          {duration:600, easing:'cubic-bezier(.4,2,.5,1)', fill:'forwards'});
+        return;
+      }
+      // For numeric: count up
+      const numMatch = target.match(/(\d+)/);
+      if(!numMatch) return;
+      const finalNum = parseInt(numMatch[1], 10);
+      const suffix = target.replace(/\d+/, '');
+      const duration = 1100;
+      const start = performance.now();
+      function tick(now){
+        const t = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const cur = Math.round(eased * finalNum);
+        el.textContent = cur + suffix;
+        if(t < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(tick);
+    }
+    if('IntersectionObserver' in window){
+      const nIo = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if(e.isIntersecting){
+            // Save original and scramble
+            const el = e.target;
+            if(!el.dataset.value) el.dataset.value = el.textContent.trim();
+            scrambleNumber(el);
+            nIo.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+      document.querySelectorAll('.stat-grid .num').forEach(el => nIo.observe(el));
+    }
+
+    // ============================
+    // 6) Pause hero animations when hero is off-screen (battery saver)
+    // ============================
+    if('IntersectionObserver' in window){
+      const hero = document.querySelector('.hero');
+      if(hero){
+        const hIo = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            hero.classList.toggle('anim-paused', !e.isIntersecting);
+          });
+        }, { threshold: 0 });
+        hIo.observe(hero);
+      }
+    }
+
+    // ============================
+    // 7) Magnetic hover on primary CTAs (desktop only — disabled if touch)
+    // ============================
+    const isTouch = matchMedia('(hover: none)').matches;
+    if(!isTouch){
+      document.querySelectorAll('.btn-primary, nav.topbar .cta').forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+          const r = el.getBoundingClientRect();
+          const x = e.clientX - r.left - r.width/2;
+          const y = e.clientY - r.top - r.height/2;
+          el.style.transform = `translate(${x*.15}px, ${y*.2}px)`;
+        });
+        el.addEventListener('mouseleave', () => {
+          el.style.transform = '';
+        });
+      });
     }
   </script>
 </body>
