@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fade Theory — Concept Barbershop Site by ZNP Tech</title>
+<meta name="description" content="A concept barbershop website by ZNP Tech built around online booking — services, barbers and a book-now flow for a Chicago shop. Sample work — not a real business.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://znptech.com/work/barbershop-concept.html">
+<meta name="theme-color" content="#0f1012">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fade Theory — Concept Barbershop Site by ZNP Tech">
+<meta property="og:description" content="A concept barbershop website by ZNP Tech built around online booking.">
+<meta property="og:url" content="https://znptech.com/work/barbershop-concept.html">
+<meta property="og:image" content="https://znptech.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fade Theory concept barbershop website by ZNP Tech">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://znptech.com/og-image.png">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<style>
+  :root{--bg:#0f1012;--panel:#17181b;--panel-2:#1d1f23;--line:#2a2c31;--ink:#f5f6f7;--muted:#9aa0a6;--gold:#e9c46a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+  h1,h2,h3{line-height:1.08;margin:0 0 .4em;letter-spacing:-.5px}
+  img{max-width:100%;display:block}
+  a{color:var(--gold)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  .concept-bar{background:#000;color:#cfd3d8;font-size:13px;text-align:center;padding:9px 16px}
+  .concept-bar a{color:var(--gold);font-weight:700;text-decoration:underline}
+  .concept-bar a:hover{text-decoration:underline}
+  header.site{background:rgba(15,16,18,.9);backdrop-filter:blur(8px);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:20px;height:66px}
+  .logo{font-weight:800;font-size:19px;letter-spacing:2px;color:var(--gold);text-decoration:none}
+  .nav nav{margin-left:auto;display:flex;gap:22px}
+  .nav nav a{color:var(--muted);text-decoration:none;font-size:14px;letter-spacing:.5px}
+  .nav nav a:hover{color:#fff}
+  .book{background:var(--gold);color:#17181b;padding:10px 18px;border-radius:8px;font-weight:800;text-decoration:none;letter-spacing:.5px}
+  .hero{padding:96px 0 84px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 85% 10%,rgba(233,196,106,.12),transparent 60%);pointer-events:none}
+  .hero p.k{letter-spacing:4px;text-transform:uppercase;font-size:12px;color:var(--gold);margin:0 0 16px}
+  .hero h1{font-size:clamp(40px,7vw,74px);font-weight:800}
+  .hero h1 .g{color:var(--gold)}
+  .hero p.sub{font-size:19px;color:var(--muted);max-width:44ch}
+  .hero .cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:14px 26px;border-radius:8px;font-weight:800;text-decoration:none;letter-spacing:.5px}
+  .btn.p{background:var(--gold);color:#17181b}
+  .btn.o{background:transparent;color:#fff;border:1.5px solid var(--line)}
+  section{padding:70px 0;border-top:1px solid var(--line)}
+  .sec-k{color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-size:12px;font-weight:700;margin:0 0 10px}
+  h2{font-size:clamp(28px,4vw,42px)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+  .svc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .svc h3{font-size:19px}
+  .svc .t{color:var(--muted);font-size:13px;letter-spacing:1px;text-transform:uppercase}
+  .svc p{color:var(--muted);font-size:14px;margin:8px 0 0}
+  .barbers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+  .barber{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-align:center;padding-bottom:18px}
+  .barber .ph{height:150px;background:linear-gradient(135deg,#2a2c31,#3a3d44)}
+  .barber h3{margin:16px 0 2px;font-size:17px}
+  .barber p{color:var(--muted);font-size:13px;margin:0}
+  .bookstrip{background:linear-gradient(120deg,#e9c46a,#d9a93f);color:#17181b}
+  .bookstrip h2{color:#17181b}
+  .bookstrip .btn.dark{background:#17181b;color:var(--gold)}
+  footer.site{background:#0b0c0d;color:#9aa0a6;padding:40px 0;font-size:14px;text-align:center}
+  footer.site a{color:var(--gold);text-decoration:underline}
+  .sticky-book{position:fixed;left:16px;right:16px;bottom:16px;z-index:20;display:none}
+  .sticky-book a{display:block;text-align:center;background:var(--gold);color:#17181b;font-weight:800;padding:15px;border-radius:12px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+  @media(max-width:720px){.grid,.barbers{grid-template-columns:1fr}.nav nav{display:none}.nav .book{display:none}.sticky-book{display:block}}
+</style>
+</head>
+<body>
+<div class="concept-bar">◆ CONCEPT — a sample site by <a href="../index.html">ZNP&nbsp;Tech</a>. Not a real business. &nbsp;<a href="../index.html#contact">Want one like this? →</a></div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#">FADE THEORY</a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#team">Barbers</a>
+      <a href="#book">Hours</a>
+    </nav>
+    <a class="book" href="#book">Book Now</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="k">Chicago · est. 2026</p>
+      <h1>Sharp cuts,<br><span class="g">booked in seconds.</span></h1>
+      <p class="sub">A modern barbershop in the heart of the city. Pick your barber, pick your time, and skip the wait.</p>
+      <div class="cta">
+        <a class="btn p" href="#book">Book an Appointment</a>
+        <a class="btn o" href="#services">View Services</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="sec-k">Services</p>
+      <h2>Clean work, every chair</h2>
+      <div class="grid">
+        <div class="svc"><span class="t">30 min</span><h3>Skin Fade</h3><p>Precision fade, blended and detailed to the skin.</p></div>
+        <div class="svc"><span class="t">45 min</span><h3>Cut &amp; Beard</h3><p>Full haircut paired with a shaped, lined-up beard.</p></div>
+        <div class="svc"><span class="t">20 min</span><h3>Beard Sculpt</h3><p>Trim, shape and hot-towel finish.</p></div>
+        <div class="svc"><span class="t">45 min</span><h3>Hot Towel Shave</h3><p>Classic straight-razor shave, start to finish.</p></div>
+        <div class="svc"><span class="t">25 min</span><h3>Kids Cut</h3><p>Patient, clean cuts for the younger crowd.</p></div>
+        <div class="svc"><span class="t">15 min</span><h3>Line-Up</h3><p>Crisp edge-up between full cuts.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <p class="sec-k">The Team</p>
+      <h2>Book your barber by name</h2>
+      <div class="barbers">
+        <div class="barber"><div class="ph" aria-hidden="true"></div><h3>Marcus</h3><p>Fades &amp; designs</p></div>
+        <div class="barber"><div class="ph" aria-hidden="true"></div><h3>Deja</h3><p>Shears &amp; texture</p></div>
+        <div class="barber"><div class="ph" aria-hidden="true"></div><h3>Tony</h3><p>Classic cuts &amp; shaves</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" class="bookstrip">
+    <div class="wrap" style="text-align:center">
+      <p class="sec-k" style="color:#17181b">Book now</p>
+      <h2>Your chair is waiting</h2>
+      <p style="max-width:46ch;margin:8px auto 0;color:#3a2f16">Open Tue–Sun. Real-time availability, instant confirmation, easy reschedule.</p>
+      <div style="margin-top:24px"><a class="btn dark" href="#">Check Availability</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Fade Theory (concept) · Chicago, IL · Tue–Sun 9a–7p</p>
+    <p>A concept site designed and built by <a href="../index.html">ZNP Tech</a> · <a href="../index.html#contact">Get a site like this</a></p>
+  </div>
+</footer>
+
+<div class="sticky-book"><a href="#book">Book Now</a></div>
+</body>
+</html>
