@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La Luz Cantina — Concept Restaurant Site by ZNP Tech</title>
 <meta name="description" content="A concept restaurant website by ZNP Tech showing a menu, hours and online ordering for a neighborhood Chicago cantina. Sample work — not a real business.">
-<meta name="robots" content="noindex, follow">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://znptech.com/work/restaurant-concept.html">
 <meta name="theme-color" content="#b5431f">
 <meta property="og:type" content="website">
@@ -68,7 +68,10 @@
   footer.site a{color:var(--brand-2);text-decoration:underline}
   .foodstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
   .foodstrip div{height:120px;border-radius:12px}
+  .logo,.order{white-space:nowrap}
+  .order{margin-left:auto}
   @media(max-width:720px){.menu,.info,.foodstrip{grid-template-columns:1fr}.nav nav{display:none}}
+  @media(max-width:480px){.nav{gap:12px}.logo{font-size:19px}.order{font-size:13px;padding:8px 14px}}
 </style>
 </head>
 <body>
